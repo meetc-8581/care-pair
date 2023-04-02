@@ -4,15 +4,9 @@ import Navbar from "./Navbar/Navbar";
 import SelectDropdown from "./Inputs/SelectDropdown";
 import Datepicker from "./Inputs/DatePicker";
 import Recommendations from "./Recommendations/Recommendations";
+import SelectPatients from "./Patients/SelectPatients";
 
 function Dashboard() {
-  const Patients = [
-    { value: "Liam", label: "Liam" },
-    { value: "Noah", label: "Noah" },
-    { value: "Jason", label: "Jason" },
-    { value: "William	", label: "William" },
-  ];
-
   const therapies = [
     { value: "Physical", label: "Physical" },
     { value: "Occupational", label: "Occupational " },
@@ -20,11 +14,18 @@ function Dashboard() {
     { value: "Home-health Aid	", label: "Home-health Aid" },
   ];
 
+  //   const nurses = [
+  //     { value: "Sarah", label: "Sarah" },
+  //     { value: "Jessica", label: "Jessica" },
+  //     { value: "Elizabeth", label: "Elizabeth" },
+  //     { value: "Madison", label: "Madison" },
+  //   ];
+
   const nurses = [
-    { value: "Sarah", label: "Sarah" },
-    { value: "Jessica", label: "Jessica" },
-    { value: "Elizabeth", label: "Elizabeth" },
-    { value: "Madison", label: "Madison" },
+    { id: "1", name: "Sarah", score: 99 },
+    { id: "2", name: "Jessica", score: 99 },
+    { id: "3", name: "Elizabeth", score: 99 },
+    { id: "4", name: "Madison", score: 99 },
   ];
 
   return (
@@ -35,7 +36,8 @@ function Dashboard() {
           <div className="text-2xl">Patient</div>
           <div className="grid grid-cols-3 gap-4 h-96 my-10">
             <div>
-              <SelectDropdown options={Patients} name={"Name"} />
+              {/* <SelectDropdown options={Patients} name={"Name"} /> */}
+              <SelectPatients></SelectPatients>
             </div>
             <div>
               <SelectDropdown options={therapies} name={"Therapy"} />

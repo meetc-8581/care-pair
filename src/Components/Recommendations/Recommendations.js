@@ -1,6 +1,18 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function Recommendations({ nurses }) {
+  const [predictions, setpredictions] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/predict")
+      .then((response) => setpredictions(response.data.data))
+      .catch((error) => console.log(error));
+
+    console.log(predictions);
+  }, []);
+
   return (
     <div className="class">
       <ul class="my-4 space-y-3">
@@ -24,9 +36,10 @@ function Recommendations({ nurses }) {
                 src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairCurly&accessoriesType=Prescription01&hairColor=Black&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=White&eyeType=Happy&eyebrowType=SadConcerned&mouthType=Smile&skinColor=Light"
               />
 
-              <span class="flex-1 ml-3 whitespace-nowrap">{nurse.value}</span>
+              <span class="flex-1 ml-3 whitespace-nowrap">{nurse.name}</span>
               <span class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-grey-500 bg-yellow-200 rounded ">
-                99%
+                {nurse.score}
+                {"%"}
               </span>
             </a>
           </li>
