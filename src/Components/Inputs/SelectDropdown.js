@@ -16,7 +16,7 @@ function SelectDropdown({ options, name }) {
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        placeholder={"Select a ".name}
+        placeholder={"Physical"}
       />
     </div>
   );
